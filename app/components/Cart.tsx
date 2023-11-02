@@ -9,6 +9,11 @@ import empty_cart from "@/public/empty_cart.png";
 export default function Cart() {
   const cartStore = useCartStore();
 
+  // total price
+  const totalPrice = cartStore.cart.reduce((acc, item) => {
+    return acc + (item.unit_amount as number) * (item.quantity as number);
+  }, 0)
+
   return (
     <div
       onClick={() => cartStore.toggleCart()}
@@ -66,6 +71,8 @@ export default function Cart() {
             </div>
           </div>
         ))}
+        {/* checkout and total */}
+        {cartStore.cart.length > 0 && <p>Total: {formatPrice(totalPrice)}</p>}
         {cartStore.cart.length > 0 && (
           <button className="py-2 mt-4 bg-teal-700 w-full rounded-md text-white">
             Checkout

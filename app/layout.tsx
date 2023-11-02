@@ -1,11 +1,25 @@
 import type { Metadata } from "next";
-// import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "./components/Nav";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import Hydrate from "./components/Hydrate";
-// const inter = Inter({ subsets: ["latin"] });
+import { Roboto, Lobster_Two } from "next/font/google";
+import { Inter } from "next/font/google";
+
+// define main font
+const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-roboto",
+});
+
+const lobster = Lobster_Two({
+  weight: "700",
+  subsets: ["latin"],
+  variable: "--font-lobster",
+})
 
 export const metadata: Metadata = {
   title: "1Piece - The Best One Piece Figures Shope",
@@ -21,7 +35,7 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions);
   return (
     <html lang="en">
-      <body className="mx-64">
+      <body className={`mx-64 ${roboto.className}`}>
         <Hydrate>
           <Nav user={session?.user} expires={session?.expires as string} />
           {children}
