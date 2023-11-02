@@ -9,7 +9,7 @@ import Stripe from "stripe";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET as string,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
