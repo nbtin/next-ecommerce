@@ -29,13 +29,27 @@ export default function Cart() {
         onClick={(e) => e.stopPropagation()}
         className="bg-white absolute right-0 top-0 h-screen p-12 overflow-y-scroll text-gray-700 w-full lg:w-2/5"
       >
-        {cartStore.cart.length > 0 && <h1>Here's your shopping list 📃</h1>}
-        <button
-          onClick={() => cartStore.toggleCart()}
-          className="text-sm font-bold pb-12"
-        >
-          Back to store 🏃🏼‍♂️
-        </button>
+        {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" && (
+          <h1>Here's your shopping list 📃</h1>
+        )}
+        {cartStore.onCheckout === "cart" && (
+          <button
+            onClick={() => cartStore.toggleCart()}
+            className="text-sm font-bold pb-12"
+          >
+            Back to store 🏃🏼‍♂️
+          </button>
+        )}
+
+        {cartStore.onCheckout === "checkout" && (
+          <button
+            onClick={() => cartStore.setCheckout("cart")}
+            className="text-sm font-bold pb-12"
+          >
+            Check your cart 🛒
+          </button>
+        )}
+
         {/* cart items */}
         {cartStore.onCheckout === "cart" && (
           <>
@@ -89,17 +103,21 @@ export default function Cart() {
           </>
         )}
         {/* checkout and total */}
-        <motion.div layout>
-          {cartStore.cart.length > 0 && <p>Total: {formatPrice(totalPrice)}</p>}
-          {cartStore.cart.length > 0 && (
-            <button
-              onClick={() => cartStore.setCheckout("checkout")}
-              className="py-2 mt-4 bg-teal-700 w-full rounded-md text-white"
-            >
-              Checkout
-            </button>
-          )}
-        </motion.div>
+        {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" ? (
+          <motion.div layout>
+            {cartStore.cart.length > 0 && (
+              <p>Total: {formatPrice(totalPrice)}</p>
+            )}
+            {cartStore.cart.length > 0 && (
+              <button
+                onClick={() => cartStore.setCheckout("checkout")}
+                className="py-2 mt-4 bg-teal-700 w-full rounded-md text-white"
+              >
+                Checkout
+              </button>
+            )}
+          </motion.div>
+        ) : null}
         {/* checkout form */}
         {cartStore.onCheckout === "checkout" && <Checkout />}
         <AnimatePresence>

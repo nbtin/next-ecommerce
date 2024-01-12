@@ -5,6 +5,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useCartStore } from "@/store";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import CheckoutForm from "./CheckoutForm";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY! // add prefix "NEXT_PUBLIC_" for using the stripe publishable key from .env on the client side
@@ -41,9 +42,24 @@ export default function Checkout() {
         cartStore.setPaymentIntent(data.paymentIntent.id);
       });
   }, []);
+
+  const options: StripeElementsOptions = {
+    clientSecret,
+    appearance: {
+      theme: "stripe",
+      labels: "floating",
+    },
+  };
+
   return (
     <div>
-      <h1>Checkout</h1>
+      {clientSecret && (
+        <div>
+          <Elements options={options} stripe={stripePromise}>
+            <CheckoutForm clientSecret={clientSecret}></CheckoutForm>
+          </Elements>
+        </div>
+      )}
     </div>
   );
 }
