@@ -41,13 +41,16 @@ export default async function Dashboard() {
     <div>
       <div className="font-medium">
         {orders.reverse().map((order) => (
-          <div key={order.id} className="rounded-lg p-8 my-4 space-y-2">
+          <div
+            key={order.id}
+            className="rounded-lg p-8 my-4 space-y-2 bg-base-200"
+          >
             <h2 className="text-xs font-medium">Order reference: {order.id}</h2>
             <p className="text-xs">
               Status:{" "}
               <span
                 className={`${
-                  order.status === "complete" ? "bg-teal-500" : "bg-orange-400"
+                  order.status === "complete" ? "bg-accent" : "bg-orange-400"
                 } text-white px-2 py-1 mx-2 rounded-md text-xs`}
               >
                 {order.status}

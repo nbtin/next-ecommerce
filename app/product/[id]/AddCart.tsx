@@ -2,6 +2,8 @@
 
 import { useCartStore } from "@/store";
 import { AddCartType } from "@/types/AddCartType";
+import { spawn } from "child_process";
+import { useState } from "react";
 
 export default function AddCart({
   name,
@@ -12,15 +14,24 @@ export default function AddCart({
 }: AddCartType) {
   const cartStore = useCartStore();
 
+  const [added, setAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    cartStore.addProduct({ name, id, image, quantity, unit_amount });
+    setAdded(true);
+    setTimeout(() => {
+      setAdded(false);
+    }, 500);
+  };
+
   return (
     <div>
       <button
-        onClick={() =>
-          cartStore.addProduct({ name, id, image, quantity, unit_amount })
-        }
-        className="my-12 text-white py-2 px-6 font-medium rounded-md bg-teal-700"
+        onClick={handleAddToCart}
+        disabled={added}
+        className="my-4 btn btn-success w-full text-gray-300"
       >
-        Add to cart
+        {added ? <span>Adding to cart 😋</span> : <span>Add to cart</span>}
       </button>
     </div>
   );

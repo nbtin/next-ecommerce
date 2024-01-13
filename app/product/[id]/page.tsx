@@ -11,7 +11,7 @@ export default async function Product({ searchParams }: SearchParamTypes) {
     : (description_lines = []);
 
   return (
-    <div className="flex flex-col 2xl:flex-row items-center justify-between gap-24 text-gray-700">
+    <div className="flex flex-col xl:flex-row items-center justify-between gap-24">
       <Image
         src={searchParams.image}
         alt={searchParams.name}
@@ -20,7 +20,7 @@ export default async function Product({ searchParams }: SearchParamTypes) {
         className="w-96 h-96 object-cover rounded-lg"
         priority={true}
       />
-      <div className="font-medium text-gray-700">
+      <div className="font-medium">
         <h1 className="text-2xl py-2">{searchParams.name}</h1>
         {description_lines.length > 0 ? (
           description_lines.map((line: any) => <p key={line}>{line}</p>)
@@ -28,7 +28,7 @@ export default async function Product({ searchParams }: SearchParamTypes) {
           <p>Product's description not found!</p>
         )}
         <div className="flex gap-2 py-2">
-          <p className="font-bold text-teal-700">
+          <p className="font-bold text-success">
             {searchParams.unit_amount && formatPrice(searchParams.unit_amount)}
           </p>
         </div>
