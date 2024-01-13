@@ -28,7 +28,7 @@ export default function Cart() {
       {/* cart */}
       <motion.div
         onClick={(e) => e.stopPropagation()}
-        className="bg-white absolute right-0 top-0 h-screen p-12 overflow-y-scroll text-gray-700 w-full lg:w-2/5"
+        className="bg-white absolute right-0 top-0 h-screen p-12 overflow-y-scroll text-gray-700 w-full lg:w-1/3"
       >
         {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" && (
           <h1>Here's your shopping list 📃</h1>

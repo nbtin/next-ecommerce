@@ -17,6 +17,7 @@ const fetchOrders = async () => {
   const orders = await prisma.order.findMany({
     where: {
       userId: user?.user?.id,
+      status: "complete",
     },
     include: {
       products: true,
@@ -40,21 +41,22 @@ export default async function Dashboard() {
     <div>
       <div className="font-medium">
         {orders.reverse().map((order) => (
-          <div key={order.id} className="rounded-lg p-8 my-12">
-            <h2>Order reference: {order.id}</h2>
-            <p>Time: {new Date(order.createdDate)}</p>
-            <p className="text-md py-2">
+          <div key={order.id} className="rounded-lg p-8 my-4 space-y-2">
+            <h2 className="text-xs font-medium">Order reference: {order.id}</h2>
+            <p className="text-xs">
               Status:{" "}
               <span
                 className={`${
                   order.status === "complete" ? "bg-teal-500" : "bg-orange-400"
-                } text-white px-2 py-1 rounded-md text-sm`}
+                } text-white px-2 py-1 mx-2 rounded-md text-xs`}
               >
                 {order.status}
               </span>
             </p>
-            <p className="font-medium">Total: {formatPrice(order.amount)}</p>
-            <div className="flex gap-8">
+            <p className="text-xs">
+              Time: {new Date(order.createdDate).toLocaleString()}
+            </p>
+            <div className="text-sm xl:flex items-center gap-4">
               {order.products.map((product) => (
                 <div className="py-2" key={product.id}>
                   <h2 className="py-2">{product.name}</h2>
@@ -71,6 +73,7 @@ export default async function Dashboard() {
                 </div>
               ))}
             </div>
+            <p className="font-medium">Total: {formatPrice(order.amount)}</p>
           </div>
         ))}
       </div>
