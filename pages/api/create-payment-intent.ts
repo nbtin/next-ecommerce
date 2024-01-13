@@ -2,7 +2,6 @@ import Stripe from "stripe";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./auth/[...nextauth]";
-import { connect } from "http2";
 import { AddCartType } from "@/types/AddCartType";
 import { PrismaClient } from "@prisma/client";
 
@@ -33,6 +32,7 @@ export default async function handler(
 
   // extract the data from the body
   const { items, payment_intent_id } = req.body;
+  console.log(payment_intent_id);
 
   // create the order data
   const orderData = {
@@ -52,8 +52,11 @@ export default async function handler(
     },
   };
 
+  console.log(payment_intent_id);
+
   // check if the payment intent exists
   if (payment_intent_id) {
+    console.log("payment intent exists");
     // update the order
     const current_intent = await stripe.paymentIntents.retrieve(
       payment_intent_id
@@ -102,6 +105,7 @@ export default async function handler(
       return;
     }
   } else {
+    console.log("payment intent doesn't exist");
     // create a new order with prisma
     const paymentIntent = await stripe.paymentIntents.create({
       amount: calculateOrderAmount(items),

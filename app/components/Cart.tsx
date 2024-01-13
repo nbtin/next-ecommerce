@@ -70,19 +70,6 @@ export default function Cart() {
                     <h2>Quantity: {item.quantity}</h2>
                     <button
                       onClick={() =>
-                        cartStore.addProduct({
-                          id: item.id,
-                          image: item.image,
-                          name: item.name,
-                          unit_amount: item.unit_amount,
-                          quantity: item.quantity,
-                        })
-                      }
-                    >
-                      <IoAddCircle />
-                    </button>
-                    <button
-                      onClick={() =>
                         cartStore.removeProduct({
                           id: item.id,
                           image: item.image,
@@ -93,6 +80,19 @@ export default function Cart() {
                       }
                     >
                       <IoRemoveCircle />
+                    </button>
+                    <button
+                      onClick={() =>
+                        cartStore.addProduct({
+                          id: item.id,
+                          image: item.image,
+                          name: item.name,
+                          unit_amount: item.unit_amount,
+                          quantity: item.quantity,
+                        })
+                      }
+                    >
+                      <IoAddCircle />
                     </button>
                   </div>
                   <p className="text-sm">
@@ -106,17 +106,13 @@ export default function Cart() {
         {/* checkout and total */}
         {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" ? (
           <motion.div layout>
-            {cartStore.cart.length > 0 && (
-              <p>Total: {formatPrice(totalPrice)}</p>
-            )}
-            {cartStore.cart.length > 0 && (
-              <button
-                onClick={() => cartStore.setCheckout("checkout")}
-                className="py-2 mt-4 bg-teal-700 w-full rounded-md text-white"
-              >
-                Checkout
-              </button>
-            )}
+            <p>Total: {formatPrice(totalPrice)}</p>
+            <button
+              onClick={() => cartStore.setCheckout("checkout")}
+              className="py-2 mt-4 bg-teal-700 w-full rounded-md text-white"
+            >
+              Checkout
+            </button>
           </motion.div>
         ) : null}
         {/* checkout form */}
