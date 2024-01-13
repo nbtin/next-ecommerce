@@ -15,7 +15,7 @@ export default function Nav({ user }: Session) {
   return (
     <nav className="flex justify-between items-center py-12">
       <Link href={"/"}>
-        <h1>1Piece</h1>
+        <h1 className="font-lobster text-2xl">1Piece</h1>
       </Link>
       <ul className="flex items-center gap-8">
         {/* Toggle the shop cart icon */}
@@ -58,11 +58,11 @@ export default function Nav({ user }: Session) {
               ></Image>
               <ul
                 tabIndex={0}
-                className="dropdown-content menu p-4 space-y-4 shadow bg-base-100 rounded-box w-64"
+                className="dropdown-content menu p-2 space-y-2 shadow bg-base-100 rounded-box w-32"
               >
                 <Link
                   href={"/dashboard"}
-                  className="hover:bg-base-300 p-4 rounded-md"
+                  className="hover:bg-base-300 p-2 rounded-md"
                   onClick={() => {
                     if (document.activeElement instanceof HTMLElement) {
                       document.activeElement.blur();
@@ -72,7 +72,7 @@ export default function Nav({ user }: Session) {
                   Orders
                 </Link>
                 <li
-                  className="hover:bg-base-300 p-4 rounded-md"
+                  className="hover:bg-base-300 p-2 rounded-md"
                   onClick={() => {
                     signOut();
                     if (document.activeElement instanceof HTMLElement) {

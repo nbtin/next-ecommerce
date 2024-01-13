@@ -31,7 +31,7 @@ export default function AddCart({
         disabled={added}
         className="my-4 btn btn-success w-full text-gray-300"
       >
-        {added ? <span>Adding to cart 😋</span> : <span>Add to cart</span>}
+        {added ? <span>Adding to cart 🤩</span> : <span>Add to cart</span>}
       </button>
     </div>
   );

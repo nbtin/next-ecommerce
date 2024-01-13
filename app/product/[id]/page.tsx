@@ -11,7 +11,7 @@ export default async function Product({ searchParams }: SearchParamTypes) {
     : (description_lines = []);
 
   return (
-    <div className="flex flex-col xl:flex-row items-center justify-between gap-24">
+    <div className="flex flex-col xl:flex-row items-center justify-between gap-16">
       <Image
         src={searchParams.image}
         alt={searchParams.name}

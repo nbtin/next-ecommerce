@@ -14,6 +14,10 @@ const config: Config = {
         // it's gonna jump into another row, and it's gonna stretch out to 1fr
         fluid: "repeat(auto-fit, minmax(15rem, 1fr))",
       },
+      fontFamily: {
+        lobster: ["var(--font-lobster)"],
+        roboto: ["var(--font-roboto)"],
+      },
     },
   },
   plugins: [require("daisyui")],
