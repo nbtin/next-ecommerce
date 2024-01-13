@@ -40,42 +40,56 @@ export default async function Dashboard() {
   return (
     <div>
       <div className="font-medium">
-        {orders.reverse().map((order) => (
-          <div key={order.id} className="rounded-lg p-8 my-4 space-y-2">
-            <h2 className="text-xs font-medium">Order reference: {order.id}</h2>
-            <p className="text-xs">
-              Status:{" "}
-              <span
-                className={`${
-                  order.status === "complete" ? "bg-teal-500" : "bg-orange-400"
-                } text-white px-2 py-1 mx-2 rounded-md text-xs`}
-              >
-                {order.status}
-              </span>
-            </p>
-            <p className="text-xs">
-              Time: {new Date(order.createdDate).toLocaleString()}
-            </p>
-            <div className="text-sm xl:flex items-center gap-4">
-              {order.products.map((product) => (
-                <div className="py-2" key={product.id}>
-                  <h2 className="py-2">{product.name}</h2>
-                  <div className="flex items-center gap-4">
-                    <Image
-                      src={product.image!}
-                      width={36}
-                      height={36}
-                      alt={product.name}
-                    />
-                    <p>{formatPrice(product.unit_amount)}</p>
-                    <p>Quantity: {product.quantity}</p>
+        {orders
+          .sort(
+            (a, b) =>
+              new Date(b.createdDate).getTime() -
+              new Date(a.createdDate).getTime()
+          )
+          .map((order) => (
+            <div
+              key={order.id}
+              className="rounded-lg p-8 my-4 space-y-2 bg-base-200"
+            >
+              <h2 className="text-xs font-medium">
+                Order reference: {order.id}
+              </h2>
+              <p className="text-xs">
+                Status:{" "}
+                <span
+                  className={`${
+                    order.status === "complete" ? "bg-accent" : "bg-orange-400"
+                  } text-white px-2 py-1 mx-2 rounded-md text-xs`}
+                >
+                  {order.status}
+                </span>
+              </p>
+              <p className="text-xs">
+                Time: {new Date(order.createdDate).toLocaleString()}
+              </p>
+              <div className="text-sm xl:flex items-center gap-4">
+                {order.products.map((product) => (
+                  <div
+                    className="rounded-lg p-4 my-2 space-y-2 bg-base-300"
+                    key={product.id}
+                  >
+                    <h2 className="py-2">{product.name}</h2>
+                    <div className="flex items-center gap-4">
+                      <Image
+                        src={product.image!}
+                        width={36}
+                        height={36}
+                        alt={product.name}
+                      />
+                      <p>{formatPrice(product.unit_amount)}</p>
+                      <p>Quantity: {product.quantity}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              <p className="font-medium">Total: {formatPrice(order.amount)}</p>
             </div>
-            <p className="font-medium">Total: {formatPrice(order.amount)}</p>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );

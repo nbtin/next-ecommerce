@@ -14,6 +14,7 @@
     "@prisma/client": "^5.4.2",
     "@stripe/react-stripe-js": "^2.4.0",
     "@stripe/stripe-js": "^2.1.9",
+    "daisyui": "^4.6.0",
     "framer-motion": "^10.16.14",
     "micro": "^10.0.1",
     "next": "13.2.4",

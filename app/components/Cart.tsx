@@ -28,24 +28,24 @@ export default function Cart() {
       {/* cart */}
       <motion.div
         onClick={(e) => e.stopPropagation()}
-        className="bg-white absolute right-0 top-0 h-screen p-12 overflow-y-scroll text-gray-700 w-full lg:w-1/3"
+        className="bg-base-200 absolute right-0 top-0 h-screen p-12 overflow-y-scroll w-full lg:w-1/3"
       >
-        {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" && (
-          <h1>Here's your shopping list 📃</h1>
-        )}
         {cartStore.onCheckout === "cart" && (
           <button
             onClick={() => cartStore.toggleCart()}
-            className="text-sm font-bold pb-12"
+            className="text-sm font-bold mb-8 hover:bg-base-100 rounded-lg p-2"
           >
             Back to store 🏃🏼‍♂️
           </button>
+        )}
+        {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" && (
+          <h1>Here's your shopping list 📃</h1>
         )}
 
         {cartStore.onCheckout === "checkout" && (
           <button
             onClick={() => cartStore.setCheckout("cart")}
-            className="text-sm font-bold pb-12"
+            className="text-sm font-bold mb-8 hover:bg-base-100 rounded-lg p-2"
           >
             Check your cart 🛒
           </button>
@@ -55,7 +55,11 @@ export default function Cart() {
         {cartStore.onCheckout === "cart" && (
           <>
             {cartStore.cart.map((item) => (
-              <motion.div layout key={item.id} className="flex py-4 gap-4">
+              <motion.div
+                layout
+                key={item.id}
+                className="flex p-4 gap-4 bg-base-100 my-4 rounded-lg"
+              >
                 <Image
                   className="rounded-md h-24"
                   src={item.image}
@@ -106,10 +110,10 @@ export default function Cart() {
         {/* checkout and total */}
         {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" ? (
           <motion.div layout>
-            <p>Total: {formatPrice(totalPrice)}</p>
+            <p className="font-bold">Total: {formatPrice(totalPrice)}</p>
             <button
               onClick={() => cartStore.setCheckout("checkout")}
-              className="py-2 mt-4 bg-teal-700 w-full rounded-md text-white"
+              className="py-2 mt-4 bg-success w-full rounded-md text-white"
             >
               Checkout
             </button>

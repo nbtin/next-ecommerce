@@ -10,7 +10,7 @@ export default function OrderAnimation() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
-        Preparing your order... 🚚
+        Preparing your order...🚚 <br /> Please wait a second 🤗
       </motion.h1>
       <Player autoplay loop src={delivery}></Player>
     </div>
