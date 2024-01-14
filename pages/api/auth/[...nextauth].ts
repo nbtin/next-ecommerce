@@ -2,7 +2,7 @@ import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 // import { PrismaClient } from "@prisma/client";
-import { prisma } from "@/util/prisma"
+import { prisma } from "@/util/prisma";
 import Stripe from "stripe";
 
 // const prisma = new PrismaClient();
@@ -45,7 +45,7 @@ export const authOptions: NextAuthOptions = {
       session.user = user;
       return session;
     },
-  }
+  },
 };
 
 export default NextAuth(authOptions);

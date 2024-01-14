@@ -3,11 +3,12 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import formatPrice from "@/util/PriceFormat";
 import Image from "next/image";
+import { prisma } from "@/util/prisma";
 
 export const revalidate = 0;
 
 const fetchOrders = async () => {
-  const prisma = new PrismaClient();
+  // const prisma = new PrismaClient();
   const user = await getServerSession(authOptions);
   if (!user) {
     return null;
@@ -34,7 +35,7 @@ export default async function Dashboard() {
   }
 
   if (orders.length === 0) {
-    <h1 className="text-bold ">You have no orders...🥹</h1>;
+    return <h1 className="text-bold ">You have no orders...🥹</h1>;
   }
   return (
     <div>
