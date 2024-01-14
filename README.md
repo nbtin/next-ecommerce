@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) e-commerce platform for selling One Piece figures, which allows users to browse the store, add items to their cart, and checkout using [Stripe](https://stripe.com/).
+This is a [Next.js](https://nextjs.org/) e-commerce website for selling One Piece figures, which allows users to browse the store, add items to their cart, and checkout using [Stripe](https://stripe.com/).
 
 ## Getting Started
 
