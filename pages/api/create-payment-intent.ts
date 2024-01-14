@@ -32,12 +32,13 @@ export default async function handler(
 
   // extract the data from the body
   const { items, payment_intent_id } = req.body;
+  const total_amount = calculateOrderAmount(items);
   console.log(payment_intent_id);
 
   // create the order data
   const orderData = {
     user: { connect: { id: userSession.user?.id } },
-    amount: calculateOrderAmount(items),
+    amount: total_amount,
     currency: "usd",
     status: "pending",
     paymentIntentID: payment_intent_id,
@@ -65,7 +66,7 @@ export default async function handler(
       const updated_intent = await stripe.paymentIntents.update(
         payment_intent_id,
         {
-          amount: calculateOrderAmount(items),
+          amount: total_amount,
         }
       );
       // fetch order with product ids
@@ -88,7 +89,7 @@ export default async function handler(
           id: existing_order?.id,
         },
         data: {
-          amount: calculateOrderAmount(items),
+          amount: total_amount,
           products: {
             deleteMany: {},
             create: items.map((item) => ({
@@ -108,7 +109,7 @@ export default async function handler(
     console.log("payment intent doesn't exist");
     // create a new order with prisma
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: calculateOrderAmount(items),
+      amount: total_amount,
       currency: "usd",
       automatic_payment_methods: {
         enabled: true,
