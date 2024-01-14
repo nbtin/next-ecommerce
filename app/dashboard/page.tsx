@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { error } from "console";
 import formatPrice from "@/util/PriceFormat";
 import Image from "next/image";
 
@@ -80,6 +79,8 @@ export default async function Dashboard() {
                         width={36}
                         height={36}
                         alt={product.name}
+                        priority={true}
+                        className="w-auto"
                       />
                       <p>{formatPrice(product.unit_amount)}</p>
                       <p>Quantity: {product.quantity}</p>
