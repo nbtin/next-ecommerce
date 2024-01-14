@@ -65,7 +65,7 @@ export default async function Dashboard() {
                 </span>
               </p>
               <p className="text-xs">
-                Time: {new Date(order.createdDate).toLocaleString()}
+                Time: {new Date(order.createdDate).toString()}
               </p>
               <div className="text-sm xl:flex items-center gap-4">
                 {order.products.map((product) => (

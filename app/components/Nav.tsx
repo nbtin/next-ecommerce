@@ -69,7 +69,7 @@ export default function Nav({ user }: Session) {
                     }
                   }}
                 >
-                  Orders
+                  History
                 </Link>
                 <li
                   className="hover:bg-base-300 p-2 rounded-md"
