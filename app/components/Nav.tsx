@@ -45,9 +45,8 @@ export default function Nav({ user }: Session) {
             <button onClick={() => signIn()}>Sign in</button>
           </li>
         ) : (
-          // <Link href={"/dashboard"}>
           <li>
-            <div className="dropdown dropdown-end cursor-pointer">
+            <div className="dropdown dropdown-end cursor-pointer dropdown-hover">
               <Image
                 src={user?.image as string}
                 alt={user?.name as string}
@@ -69,7 +68,7 @@ export default function Nav({ user }: Session) {
                     }
                   }}
                 >
-                  Orders
+                  History
                 </Link>
                 <li
                   className="hover:bg-base-300 p-2 rounded-md"
@@ -85,7 +84,6 @@ export default function Nav({ user }: Session) {
               </ul>
             </div>
           </li>
-          // </Link>
         )}
       </ul>
       <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>

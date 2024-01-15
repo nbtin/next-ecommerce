@@ -24,7 +24,7 @@ This is a prototype for a [Next.js](https://nextjs.org/) e-commerce website desi
 ### 1. Frontend
 
 - [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/) + [DaisyUI](https://daisyui.com/)
+- [Tailwind CSS](https://tailwindcss.com/) + [DaisyUI](https://daisyui.com/) + [Framer Motion](https://www.framer.com/motion/)
 - [Zustand](https://github.com/pmndrs/zustand) (State Management)
 
 ### 2. Backend
@@ -38,3 +38,11 @@ This is a prototype for a [Next.js](https://nextjs.org/) e-commerce website desi
 This project is deployed on [Vercel](https://vercel.com/).
 
 Visit [https://next-ecommerce-flame-two.vercel.app/](https://next-ecommerce-flame-two.vercel.app/) to see the live version :fire:.
+
+P/s: If you want to test the stripe payment process, just type the card number `4242 4242 4242 4242` and any other information in the payment form :smile:. &rarr; [Learn more](https://stripe.com/docs/testing#cards).
+
+## Final Notes
+
+**Thanks for going through this Repository! Have a nice day.** 	:rose:
+
+Do you have any questions? Feel free to contact me via <a href = "mailto: baotin2402@gmail.com">E-mail</a>.
