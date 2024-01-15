@@ -1,33 +1,41 @@
-This is a [Next.js](https://nextjs.org/) e-commerce website for selling One Piece figures, which allows users to browse the store, add items to their cart, and checkout using [Stripe](https://stripe.com/).
+This is a prototype for a [Next.js](https://nextjs.org/) e-commerce website designed to sell One Piece figures.
 
-## Getting Started
+## Getting Started :eyes:
 
-First, run the development server:
+- Clone the repository.
+- Switch to the `production` branch and install dependencies.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+  ```bash
+  git checkout production
+  npm install
+  ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Create a `.env` and `.env.local` file in the root directory like the example [here](https://github.com/nbtin/next-ecommerce/blob/production/.env.example) and [here](https://github.com/nbtin/next-ecommerce/blob/production/.env.local.example).
+- Run the development server.
 
-## Deployment
+  ```bash
+  npm run dev
+  ```
+
+- Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+
+## Built With :hammer_and_pick:
+
+### 1. Frontend
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/) + [DaisyUI](https://daisyui.com/)
+- [Zustand](https://github.com/pmndrs/zustand) (State Management)
+
+### 2. Backend
+
+- [Next.js API Routes](https://nextjs.org/docs/api-routes/introduction)
+- [Prisma](https://www.prisma.io/) (ORM for [PostgreSQL](https://www.postgresql.org/))
+- [Stripe Webhooks](https://stripe.com/docs/webhooks) (Payment)
+
+## Deployment :rocket:
 
 This project is deployed on [Vercel](https://vercel.com/).
 
-Visit [https://next-ecommerce-flame-two.vercel.app/](https://next-ecommerce-flame-two.vercel.app/) to see the live version.
-
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Visit [https://next-ecommerce-flame-two.vercel.app/](https://next-ecommerce-flame-two.vercel.app/) to see the live version :fire:.
